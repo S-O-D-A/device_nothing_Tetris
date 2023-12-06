@@ -279,6 +279,10 @@ PRODUCT_PACKAGES += \
     android.hardware.light-V2-ndk.vendor \
     android.hardware.light@2.0.vendor
 
+# Linker config
+PRODUCT_VENDOR_LINKER_CONFIG_FRAGMENTS += \
+    $(LOCAL_PATH)/configs/linker.config.json
+
 # NTF
 PRODUCT_PACKAGES += \
     nt-fwk.Tetris
