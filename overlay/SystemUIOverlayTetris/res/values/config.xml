@@ -17,14 +17,14 @@
 */
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- Doze: does this device support STATE_DOZE?  -->
-    <bool name="doze_display_state_supported">true</bool>
-
-<!-- Whether to enable MediaTek-specific optical dimming for UDFPS -->
+    <!-- Whether to enable MediaTek-specific optical dimming for UDFPS -->
     <bool name="config_udfpsMtkGhbmDimming">true</bool>
 
     <!-- Name of the UDFPS HBM DimLayer for the HWComposer -->
     <string name="config_udfpsHbmDimLayer" translatable="false">NTFingerprintDimLayer</string>
+
+    <!-- Doze: does this device support STATE_DOZE?  -->
+    <bool name="doze_display_state_supported">true</bool>
 
     <!-- UI performance hints -->
     <bool name="config_enablePerformanceHints">true</bool>
