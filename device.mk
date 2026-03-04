@@ -13,7 +13,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
 # Properties
 PRODUCT_PRODUCT_PROPERTIES += \
-    persist.sys.activity_anim_perf_override=true \
     persist.sys.phh.mtk_ged_kpi=1 \
     ro.soc.manufacturer=MediaTek \
     ro.soc.model=Dimensity_7300 \
@@ -25,7 +24,7 @@ PRODUCT_PRODUCT_PROPERTIES += \
     persist.device_config.runtime.use_art_service=true \
     persist.device_config.runtime.use_app_image_startup_cache=true \
     persist.device_config.runtime.dedup_boot_image=true \
-    dalvik.vm.systemuicompilerfilter=speed-profile \
+    dalvik.vm.systemuicompilerfilter=speed \
     dalvik.vm.systemservercompilerfilter=speed-profile \
     dalvik.vm.dex2oat-threads=6 \
     dalvik.vm.image-dex2oat-threads=6 \
@@ -39,7 +38,6 @@ PRODUCT_PRODUCT_PROPERTIES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.dex2oat-filter=speed-profile \
     dalvik.vm.background-dexopt=speed-profile
-
 
 # Full ART Dexpreopt (VDEX/ODEX generation)
 WITH_DEXPREOPT := true
@@ -139,9 +137,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/apns-conf.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/apns-conf.xml
 
-# NTF
-PRODUCT_PACKAGES += \
-    nt-fwk.Tetris
 # Audio
 PRODUCT_PACKAGES += \
     android.hardware.audio.common-V1-ndk.vendor \
@@ -213,8 +208,7 @@ PRODUCT_PACKAGES += \
 
 # Graphics shims
 PRODUCT_PACKAGES += \
-    libprocessgroup_shim \
-    libbase_shim
+    libprocessgroup_shim
 
 # DRM
 PRODUCT_PACKAGES += \
@@ -391,7 +385,7 @@ PRODUCT_PACKAGES += \
     fastbootd
 
 # Kernel
-$(call inherit-product, device/nothing/Tetris-kernel/kernel.mk)
+$(call inherit-product, device/nothing/tetris-kernel/kernel.mk)
 
 # Rootdir
 PRODUCT_PACKAGES += \
@@ -450,7 +444,7 @@ PRODUCT_PACKAGES += \
 
 # Vibrator
 PRODUCT_PACKAGES += \
-    android.hardware.vibrator.service.Tetris
+    android.hardware.vibrator.service.tetris
 
 # Wifi
 PRODUCT_PACKAGES += \
@@ -474,4 +468,4 @@ PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/wifi/,$(TARGET_COPY_OUT_VENDOR)/etc/wifi)
 
 # Inherit the proprietary files
-$(call inherit-product, vendor/nothing/Tetris/Tetris-vendor.mk)
+$(call inherit-product, vendor/nothing/tetris/tetris-vendor.mk)

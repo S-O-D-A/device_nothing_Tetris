@@ -1,2 +1,7 @@
 allow platform_app vendor_sysfs_graphics:file rw_file_perms;
 allow platform_app sysfs_fod:file rw_file_perms;
+
+# Allow platform apps (SystemUI runs as platform_app) to toggle UDFPS HBM/FOD s>
+allow platform_app sysfs_fod:dir search;
+allow platform_app sysfs_fod:file rw_file_perms;
+

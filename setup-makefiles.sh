@@ -9,7 +9,7 @@
 
 set -e
 
-DEVICE=Tetris
+DEVICE=tetris
 VENDOR=nothing
 
 # Load extract_utils and do some sanity checks

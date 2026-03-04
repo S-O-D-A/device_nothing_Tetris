@@ -18,13 +18,13 @@ android_app {
     },
 
     required: [
-        "privapp-permissions_org.lineageos.dt2w.Tetris"
+        "privapp-permissions_org.lineageos.dt2w.tetris"
     ]
 }
 
 prebuilt_etc {
-    name: "privapp-permissions_org.lineageos.dt2w.Tetris",
+    name: "privapp-permissions_org.lineageos.dt2w.tetris",
     sub_dir: "permissions",
-    src: "privapp-permissions_org.lineageos.dt2w.Tetris.xml",
+    src: "privapp-permissions_org.lineageos.dt2w.tetris.xml",
     filename_from_src: true,
 }

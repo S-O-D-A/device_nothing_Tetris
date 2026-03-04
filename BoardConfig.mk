@@ -7,7 +7,7 @@
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 BUILD_BROKEN_DUP_RULES := true
 
-DEVICE_PATH := device/nothing/Tetris
+DEVICE_PATH := device/nothing/tetris
 
 # A/B
 AB_OTA_UPDATER := true
@@ -68,7 +68,7 @@ BOARD_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
 BOARD_MKBOOTIMG_INIT_ARGS += --header_version $(BOARD_INIT_BOOT_HEADER_VERSION)
 
-include device/nothing/Tetris-kernel/BoardConfigKernel.mk
+include device/nothing/tetris-kernel/BoardConfigKernel.mk
 
 # HIDL
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := $(DEVICE_PATH)/configs/vintf/compatibility_matrix.xml
@@ -98,8 +98,6 @@ BOARD_SYSTEM_DLKMIMAGE_FILE_SYSTEM_TYPE := erofs
 BOARD_ODM_DLKMIMAGE_FILE_SYSTEM_TYPE := erofs
 BOARD_VENDOR_DLKMIMAGE_FILE_SYSTEM_TYPE := erofs
 
-BOARD_EROFS_COMPRESS_HINTS := $(DEVICE_PATH)/configs/partitions/erofs_compress_hints.txt
-
 BOARD_EROFS_PCLUSTER_SIZE := 262144
 PRODUCT_FS_COMPRESSION := 1
 
@@ -122,7 +120,6 @@ TARGET_BOARD_PLATFORM := mt6878
 
 # Properties
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/configs/props/system.prop
-TARGET_PRODUCT_PROP += device/nothing/Tetris/configs/props/product.prop
 
 # Recovery
 BOARD_INCLUDE_RECOVERY_RAMDISK_IN_VENDOR_BOOT := true
@@ -140,8 +137,8 @@ ENABLE_VENDOR_RIL_SERVICE := true
 VENDOR_SECURITY_PATCH := 2025-02-08
 
 # SELinux
--include device/nothing/Tetris/sepolicy/mtk/SEPolicy.mk
--include device/nothing/Tetris/sepolicy/prop/SEPolicy.mk
+-include device/nothing/tetris/sepolicy/mtk/SEPolicy.mk
+-include device/nothing/tetris/sepolicy/prop/SEPolicy.mk
 
 BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
 SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/private
@@ -197,14 +194,8 @@ WIFI_DRIVER_FW_PATH_P2P := "P2P"
 WIFI_DRIVER_STATE_CTRL_PARAM := "/dev/wmtWifi"
 WIFI_DRIVER_STATE_ON := "1"
 WIFI_DRIVER_STATE_OFF := "0"
-WIFI_HAL_INTERFACE_COMBINATIONS := {{{STA}, 2}}
-WIFI_HAL_INTERFACE_COMBINATIONS += ,{{{AP_BRIDGED}, 1},}
-WIFI_HAL_INTERFACE_COMBINATIONS += ,{{{STA}, 1}, {{AP}, 1}}
-WIFI_HAL_INTERFACE_COMBINATIONS += ,{{{STA}, 1}, {{P2P}, 1}}
-WIFI_HAL_INTERFACE_COMBINATIONS += ,{{{STA}, 1}, {{NAN}, 1}}
 WIFI_HIDL_UNIFIED_SUPPLICANT_SERVICE_RC_ENTRY := true
-WIFI_FEATURE_HOSTAPD_11AX := true
-WIFI_FEATURE_SUPPLICANT_11AX := true
+WIFI_HIDL_FEATURE_DUAL_INTERFACE := true
 
 # Inherit the proprietary files
-include vendor/nothing/Tetris/BoardConfigVendor.mk
+include vendor/nothing/tetris/BoardConfigVendor.mk

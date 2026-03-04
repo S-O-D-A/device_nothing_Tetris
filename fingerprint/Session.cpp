@@ -5,6 +5,12 @@
  */
 
 #include <thread>
+#include <cstring>
+#include <errno.h>
+#include <fcntl.h>
+#include <unistd.h>
+
+#include <android-base/properties.h>
 
 #include <android-base/file.h>
 #include <android-base/stringprintf.h>
@@ -21,10 +27,40 @@ namespace biometrics {
 namespace fingerprint {
 
 #define FOD_UI_STATUS "/sys/panel_feature/ui_status"
+#define FOD_HBM_MODE "/sys/panel_feature/hbm_mode"
+// This node often toggles GLOBAL HBM; keep as an opt-in fallback.
+#define FOD_HBM_GLOBAL "/sys/devices/platform/soc/1401a000.dsi0/hbm"
 #define FOD_HBM_DELAY 60
 
-void setFodStatus(bool status) {
-    ::android::base::WriteStringToFile(status ? "1" : "0", FOD_UI_STATUS);
+static bool WriteSysfs(const char* path, const char* value) {
+    int fd = TEMP_FAILURE_RETRY(open(path, O_WRONLY | O_CLOEXEC));
+    if (fd < 0) {
+        ALOGW("sysfs write open failed: %s (%d)", path, errno);
+        return false;
+    }
+    ssize_t n = TEMP_FAILURE_RETRY(write(fd, value, strlen(value)));
+    if (n != (ssize_t)strlen(value)) {
+        ALOGW("sysfs write failed: %s=%s (%zd, errno=%d)", path, value, n, errno);
+        close(fd);
+        return false;
+    }
+    close(fd);
+    return true;
+}
+
+static void setFodStatus(bool status) {
+    (void)WriteSysfs(FOD_UI_STATUS, status ? "1" : "0");
+}
+
+// Prefer the panel-feature HBM mode (typically "spot"/FOD HBM). If it fails, you can opt-in
+// to the GLOBAL HBM node via persist.vendor.fod.use_global_hbm=true (debug only).
+static void setHbm(bool enable) {
+    const char* v = enable ? "1" : "0";
+    if (WriteSysfs(FOD_HBM_MODE, v)) return;
+
+    const bool allowGlobal =
+            ::android::base::GetBoolProperty("persist.vendor.fod.use_global_hbm", false);
+    if (allowGlobal) (void)WriteSysfs(FOD_HBM_GLOBAL, v);
 }
 
 void onClientDeath(void* cookie) {
@@ -54,6 +90,7 @@ ndk::ScopedAStatus Session::generateChallenge() {
 ndk::ScopedAStatus Session::revokeChallenge(int64_t challenge) {
     ALOGI("revokeChallenge: %ld", challenge);
     mDevice->goodix_extCmd(mDevice, 0, 0);
+    setHbm(false);
     setFodStatus(false);
     mDevice->revokeChallenge(mDevice, challenge);
 
@@ -169,6 +206,7 @@ ndk::ScopedAStatus Session::onPointerUp(int32_t /*pointerId*/) {
     ALOGI("onPointerUp");
 
     mDevice->goodix_extCmd(mDevice, 0, 0);
+    setHbm(false);
     setFodStatus(false);
 
     return ndk::ScopedAStatus::ok();
@@ -177,7 +215,9 @@ ndk::ScopedAStatus Session::onPointerUp(int32_t /*pointerId*/) {
 ndk::ScopedAStatus Session::onUiReady() {
     ALOGI("onUiReady");
 
-    // TODO: stub
+    // UI is ready to illuminate. Prefer panel-feature HBM (spot) if available.
+    usleep(FOD_HBM_DELAY * 1000);
+    setHbm(true);
 
     return ndk::ScopedAStatus::ok();
 }
@@ -224,6 +264,7 @@ ndk::ScopedAStatus Session::cancel() {
     ALOGI("cancel");
 
     mDevice->goodix_extCmd(mDevice, 0, 0);
+    setHbm(false);
     setFodStatus(false);
 
     int ret = mDevice->cancel(mDevice);
@@ -240,6 +281,7 @@ ndk::ScopedAStatus Session::cancel() {
 ndk::ScopedAStatus Session::close() {
     ALOGI("close");
     mDevice->goodix_extCmd(mDevice, 0, 0);
+    setHbm(false);
     setFodStatus(false);
     mClosed = true;
     mCb->onSessionClosed();
@@ -320,6 +362,7 @@ bool Session::checkSensorLockout() {
 
     if (lockoutMode != LockoutMode::NONE) {
 	mDevice->goodix_extCmd(mDevice, 0, 0);
+        setHbm(false);
         setFodStatus(false);
     }
 
@@ -391,6 +434,7 @@ void Session::notify(const fingerprint_msg_t* msg) {
                                       msg->data.enroll.samples_remaining);
             if (msg->data.enroll.samples_remaining == 0) {
                 mDevice->goodix_extCmd(mDevice, 0, 0);
+                setHbm(false);
                 setFodStatus(false);
             }
         } break;
@@ -412,10 +456,13 @@ void Session::notify(const fingerprint_msg_t* msg) {
                 mCb->onAuthenticationSucceeded(msg->data.authenticated.finger.fid, authToken);
                 mLockoutTracker.reset(true);
                 mDevice->goodix_extCmd(mDevice, 0, 0);
+                setHbm(false);
                 setFodStatus(false);
             } else {
                 mCb->onAuthenticationFailed();
                 mLockoutTracker.addFailedAttempt();
+                setHbm(false);
+                setFodStatus(false);
                 checkSensorLockout();
             }
         } break;
