@@ -1,0 +1,20 @@
+[
+  {
+    "remote": "github",
+    "repository": "SuperAviation001/android_device_nothing_tetris-kernel",
+    "target_path": "device/nothing/tetris-kernel",
+    "branch": "lineage-22.2"
+  },
+  {
+    "remote": "github",
+    "repository": "NothingOSS/android_kernel_6.1_nothing_mt6878",
+    "target_path": "kernel/nothing/tetris",
+    "branch": "mt6878/Tetris/u"
+  },
+  {
+    "remote": "github",
+    "repository": "S-O-D-A/vendor_nothing_tetris",
+    "target_path": "vendor/nothing/tetris",
+    "branch": "a15"
+  }
+]
