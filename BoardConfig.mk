@@ -170,3 +170,20 @@ WIFI_HIDL_FEATURE_DUAL_INTERFACE := true
 
 # Inherit the proprietary files
 include vendor/nothing/tetris/BoardConfigVendor.mk
+
+# Verified Boot
+BOARD_AVB_ENABLE := true
+
+# Build chained vbmeta_system.img (required for A/B OTA if vbmeta_system is in AB_OTA_PARTITIONS)
+BOARD_AVB_VBMETA_SYSTEM := product system system_ext
+BOARD_AVB_VBMETA_SYSTEM_ALGORITHM := SHA256_RSA2048
+BOARD_AVB_VBMETA_SYSTEM_KEY_PATH := external/avb/test/data/testkey_rsa2048.pem
+BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
+BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX_LOCATION := 1
+
+# Build chained vbmeta_vendor.img (required if vbmeta_vendor is in AB_OTA_PARTITIONS)
+BOARD_AVB_VBMETA_VENDOR := vendor
+BOARD_AVB_VBMETA_VENDOR_ALGORITHM := SHA256_RSA2048
+BOARD_AVB_VBMETA_VENDOR_KEY_PATH := external/avb/test/data/testkey_rsa2048.pem
+BOARD_AVB_VBMETA_VENDOR_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
+BOARD_AVB_VBMETA_VENDOR_ROLLBACK_INDEX_LOCATION := 2
