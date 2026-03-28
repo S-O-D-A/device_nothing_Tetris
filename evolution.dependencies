@@ -16,5 +16,11 @@
     "repository": "S-O-D-A/vendor_nothing_tetris",
     "target_path": "vendor/nothing/tetris",
     "branch": "a15"
+  },
+  {
+    "remote": "github",
+    "repository": "hardware_mediatek",
+    "target_path": "hardware/mediatek",
+    "branch": "bka"
   }
 ]
