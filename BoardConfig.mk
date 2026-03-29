@@ -111,10 +111,7 @@ TARGET_COPY_OUT_SYSTEM_EXT := system_ext
 TARGET_COPY_OUT_VENDOR := vendor
 TARGET_COPY_OUT_VENDOR_DLKM := vendor_dlkm
 
-# Reserve space for GAPPS
-ifeq ($(PRODUCT_SYSTEM_PARTITIONS_FILE_SYSTEM_TYPE),ext4)
--include vendor/lineage/config/BoardConfigReservedSize.mk
-endif
+-include vendor/bliss/config/BoardConfigReservedSize.mk
 
 # Platform
 BOARD_HAS_MTK_HARDWARE := true
