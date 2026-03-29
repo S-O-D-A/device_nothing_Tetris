@@ -25,7 +25,6 @@ PRODUCT_PRODUCT_PROPERTIES += \
     persist.device_config.runtime.use_art_service=true \
     persist.device_config.runtime.use_app_image_startup_cache=true \
     persist.device_config.runtime.dedup_boot_image=true \
-    dalvik.vm.systemuicompilerfilter=speed-profile \
     dalvik.vm.systemservercompilerfilter=speed-profile \
     dalvik.vm.dex2oat-threads=6 \
     dalvik.vm.image-dex2oat-threads=6 \
