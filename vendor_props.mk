@@ -193,6 +193,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Graphics
 PRODUCT_PROPERTY_OVERRIDES += \
+    debug.graphics.game_default_frame_rate.disabled=true \
     debug.renderengine.backend=skiaglthreaded \
     debug.sf.enable_gl_backpressure=1 \
     debug.sf.enable_hwc_vds=0 \
