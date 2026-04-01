@@ -2,7 +2,7 @@
   {
     "remote": "github",
     "repository": "SuperAviation001/android_device_nothing_tetris-kernel",
-    "target_path": "device/nothing/tetris-kernel",
+    "target_path": "device/nothing/Tetris-kernel",
     "branch": "lineage-22.2"
   },
   {
@@ -14,7 +14,7 @@
   {
     "remote": "github",
     "repository": "S-O-D-A/vendor_nothing_tetris",
-    "target_path": "vendor/nothing/tetris",
+    "target_path": "vendor/nothing/Tetris",
     "branch": "a15"
   },
   {
