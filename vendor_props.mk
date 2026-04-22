@@ -729,6 +729,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.log.tag.trm_lib=$(VENDOR_LOG_LEVEL) \
     persist.log.tag.wpfa_iptable_android=$(VENDOR_LOG_LEVEL)
 
+# RKPD
+PRODUCT_PROPERTY_OVERRIDES += \
+    remote_provisioning.enable_rkpd=true \
+    remote_provisioning.hostname=remoteprovisioning.googleapis.com \
+    remote_provisioning.connect_timeout_millis=2000
+    
 # ZRAM
 PRODUCT_PROPERTY_OVERRIDES += \
 ro.zram.mark_idle_delay_mins=60 \

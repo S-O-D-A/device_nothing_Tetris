@@ -127,6 +127,9 @@ function blob_fixup() {
             ( "${PATCHELF}" --print-needed "${2}" | grep -q libprocessgroup_shim.so || \
               "${PATCHELF}" --add-needed libprocessgroup_shim.so "${2}" )
             ;;
+        vendor/bin/hw/android.hardware.security.keymint@3.0-service.trustonic)
+            "${PATCHELF}" --add-needed "android.hardware.security.rkp-V3-ndk.so" "${2}"
+            ;;
 
     esac
 }
