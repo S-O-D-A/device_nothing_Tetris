@@ -185,6 +185,10 @@ PRODUCT_PACKAGES += \
     libsuspend \
     libdrm
 
+# refresh rate
+$(call soong_config_set,surfaceflinger,frame_rate_category_high,120)
+$(call soong_config_set,surfaceflinger,frame_rate_category_min,60)
+
 # Display
 PRODUCT_PACKAGES += \
     android.hardware.graphics.allocator-V1-ndk.vendor \
