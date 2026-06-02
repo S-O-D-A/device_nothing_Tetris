@@ -66,6 +66,9 @@ mediatek.wlan.ctia=0
 wifi.tethering.interface=ap0
 wifi.direct.interface=p2p0
 
+# Increase max cached processes
+activity_manager.max_cached_processes=64
+
 # infinity
 ro.product.marketname=CMF Phone 1
 ro.infinity.soc=Mediatek Dimensity 7300
