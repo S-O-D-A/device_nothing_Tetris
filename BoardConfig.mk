@@ -113,7 +113,7 @@ TARGET_COPY_OUT_SYSTEM_EXT := system_ext
 TARGET_COPY_OUT_VENDOR := vendor
 TARGET_COPY_OUT_VENDOR_DLKM := vendor_dlkm
 
--include vendor/bliss/config/BoardConfigReservedSize.mk
+-include vendor/lineage/config/BoardConfigReservedSize.mk
 
 # Platform
 BOARD_HAS_MTK_HARDWARE := true
