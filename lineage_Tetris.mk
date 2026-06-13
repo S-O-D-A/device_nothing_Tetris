@@ -9,6 +9,14 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
+# AxionOS flags
+TARGET_INCLUDE_AXFX := true
+PERF_ANIM_OVERRIDE := true
+AXION_CAMERA_REAR_INFO := 50,2
+AXION_CAMERA_FRONT_INFO := 16
+AXION_MAINTAINER := SODA
+AXION_PROCESSOR := MediaTek_Dimensity_7300
+
 # Enable ADPF pipeline for UI performance
 PRODUCT_PRODUCT_PROPERTIES += \
 persist.vendor.power.adpf.enable=true \
@@ -29,7 +37,7 @@ PRODUCT_MODEL := A015
 
 PRODUCT_GMS_CLIENTID_BASE := android-nothing
 
-DEVICE_CODENAME := tetris
+DEVICE_CODENAME := Tetris
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     BuildDesc="Tetris 15 AP3A.240905.015.A2 2506092111 release-keys" \
