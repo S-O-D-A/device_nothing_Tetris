@@ -164,7 +164,6 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    android.frameworks.displayservice@1.0.vendor \
     android.hardware.camera.common-V1-ndk.vendor \
     android.hardware.camera.common-V2-ndk.vendor \
     android.hardware.camera.device-V2-ndk.vendor \
@@ -255,8 +254,7 @@ PRODUCT_PACKAGES += \
 # Light
 PRODUCT_PACKAGES += \
     android.hardware.light-V1-ndk.vendor \
-    android.hardware.light-V2-ndk.vendor \
-    android.hardware.light@2.0.vendor
+    android.hardware.light-V2-ndk.vendor
 
 # Linker config
 PRODUCT_VENDOR_LINKER_CONFIG_FRAGMENTS += \
@@ -287,7 +285,6 @@ PRODUCT_COPY_FILES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power-service.pixel-libperfmgr \
     android.hardware.power-V4-ndk.vendor \
     android.hardware.power@1.2.vendor
 
