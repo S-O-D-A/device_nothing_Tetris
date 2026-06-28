@@ -210,3 +210,7 @@ WIFI_FEATURE_SUPPLICANT_11AX := true
 
 # Inherit the proprietary files
 include vendor/nothing/Tetris/BoardConfigVendor.mk
+
+# TEMP: A17 bringup debug only. Remove before release.
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+BOARD_BOOTCONFIG += androidboot.selinux=permissive
