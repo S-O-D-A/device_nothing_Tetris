@@ -316,6 +316,7 @@
         "100",
         "75",
         "50",
+        "40",
         "25",
         "20",
         "0"
@@ -530,8 +531,14 @@
     {
       "PowerHint": "LAUNCH",
       "Node": "TAUclampMin",
-      "Duration": 3000,
-      "Value": "100"
+      "Duration": 2000,
+      "Value": "40"
+    },
+    {
+      "PowerHint": "LAUNCH",
+      "Node": "FGUclampMin",
+      "Duration": 2000,
+      "Value": "50"
     },
     {
       "PowerHint": "LAUNCH",
