@@ -317,6 +317,7 @@
         "75",
         "50",
         "25",
+        "20",
         "0"
       ],
       "ResetOnInit": true
@@ -499,8 +500,8 @@
     {
       "PowerHint": "INTERACTION",
       "Node": "TAUclampMin",
-      "Duration": 3500,
-      "Value": "50"
+      "Duration": 0,
+      "Value": "20"
     },
     {
       "PowerHint": "INTERACTION",
