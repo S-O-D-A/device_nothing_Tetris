@@ -316,7 +316,9 @@
         "100",
         "75",
         "50",
+        "40",
         "25",
+        "20",
         "0"
       ],
       "ResetOnInit": true
@@ -432,6 +434,18 @@
     },
     {
       "PowerHint": "SUSTAINED_PERFORMANCE",
+      "Node": "TAUclampMin",
+      "Duration": 0,
+      "Value": "20"
+    },
+    {
+      "PowerHint": "SUSTAINED_PERFORMANCE",
+      "Node": "FGUclampMin",
+      "Duration": 0,
+      "Value": "30"
+    },
+    {
+      "PowerHint": "SUSTAINED_PERFORMANCE",
       "Node": "GpuPwrLevel",
       "Duration": 0,
       "Value": "3"
@@ -444,19 +458,7 @@
     },
     {
       "PowerHint": "FIXED_PERFORMANCE",
-      "Node": "CPUBigClusterMaxFreq",
-      "Duration": 0,
-      "Value": "9999999"
-    },
-    {
-      "PowerHint": "FIXED_PERFORMANCE",
       "Node": "CPUBigClusterMinFreq",
-      "Duration": 0,
-      "Value": "9999999"
-    },
-    {
-      "PowerHint": "FIXED_PERFORMANCE",
-      "Node": "CPULittleClusterMaxFreq",
       "Duration": 0,
       "Value": "9999999"
     },
@@ -465,12 +467,6 @@
       "Node": "CPULittleClusterMinFreq",
       "Duration": 0,
       "Value": "9999999"
-    },
-    {
-      "PowerHint": "FIXED_PERFORMANCE",
-      "Node": "TAUclampMin",
-      "Duration": 0,
-      "Value": "100"
     },
     {
       "PowerHint": "FIXED_PERFORMANCE",
@@ -499,8 +495,8 @@
     {
       "PowerHint": "INTERACTION",
       "Node": "TAUclampMin",
-      "Duration": 3500,
-      "Value": "50"
+      "Duration": 0,
+      "Value": "20"
     },
     {
       "PowerHint": "INTERACTION",
@@ -529,8 +525,14 @@
     {
       "PowerHint": "LAUNCH",
       "Node": "TAUclampMin",
-      "Duration": 3000,
-      "Value": "100"
+      "Duration": 2000,
+      "Value": "40"
+    },
+    {
+      "PowerHint": "LAUNCH",
+      "Node": "FGUclampMin",
+      "Duration": 2000,
+      "Value": "50"
     },
     {
       "PowerHint": "LAUNCH",
@@ -585,6 +587,12 @@
       "Node": "CPUBigClusterMinFreq",
       "Duration": 1000,
       "Value": "2050000"
+    },
+    {
+      "PowerHint": "EXPENSIVE_RENDERING",
+      "Node": "TAUclampMin",
+      "Duration": 0,
+      "Value": "20"
     },
     {
       "PowerHint": "EXPENSIVE_RENDERING",

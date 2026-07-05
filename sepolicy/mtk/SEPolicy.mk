@@ -1,4 +1,5 @@
-# Board specific SELinux policy variable definitions
+# Board specific SELinux policy variable definitions 
+# Bringup for ASCP Project 
 MTK_SEPOLICY_PATH := device/nothing/Tetris/sepolicy/mtk
 
 include device/lineage/sepolicy/libperfmgr/sepolicy.mk

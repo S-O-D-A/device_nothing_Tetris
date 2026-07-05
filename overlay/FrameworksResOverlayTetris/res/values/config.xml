@@ -78,6 +78,12 @@
     <!-- Whether device supports double tap to wake -->
     <bool name="config_supportDoubleTapWake">true</bool>
 
+    <!-- Enable the pickup/lift sensor to wake the screen -->
+    <bool name="config_liftToWakeEnabled">true</bool>
+
+    <!-- Target the default hardware sensor framework for wake gestures -->
+    <integer name="config_wakeGestureSensorType">1</integer>
+
     <!-- Minimum screen brightness setting allowed by power manager.
          -2 is invalid so setting will resort to int value specified above.
          Set this to 0.0 to allow screen to go to minimal brightness.
@@ -471,4 +477,41 @@
     <!-- Show volume panel on the left side -->
      <bool name="config_audioPanelOnLeftSide">true</bool>
     
+    <!-- Set default minimum and peak refresh rate to 120Hz -->
+    <integer name="config_defaultRefreshRate">120</integer>
+
+    <!-- Enable pitch black theme support in framework -->
+    <bool name="config_ambientDarkThemeSupported">true</bool>
+    <!-- Force show battery percentage in status bar on first boot -->
+    <integer name="def_battery_percentage_setting">1</integer>
+    <!-- Lift to wake activation -->
+    <bool name="config_vibrateOnWakeUp">true</bool>
+
+    <!-- Top Vibration Intensity (Max Level 3) -->
+    <integer name="config_defaultHapticFeedbackIntensity">3</integer>
+    <integer name="config_defaultNotificationVibrationIntensity">3</integer>
+    <integer name="config_defaultRingVibrationIntensity">3</integer>
+
+    <!-- Strong Haptic Amplitudes -->
+    <integer-array name="config_longPressVibePattern">
+        <item>0</item>
+        <item>40</item>
+    </integer-array>
+    <integer-array name="config_virtualKeyVibePattern">
+        <item>0</item>
+        <item>30</item>
+    </integer-array>
+    <!-- [1] Pocket Mode: Accidental Wakeups Prevention -->
+    <!-- Proximity/Pocket sensor ko check karega taaki pocket me screen automatically on na ho -->
+    <bool name="config_pocketModeSupported">true</bool>
+
+    <!-- [2] Quick Fingerprint Recognition & Vibration -->
+    <!-- Fingerprint match hote hi dynamic haptic buzz trigger karega -->
+    <bool name="config_fingerprint_haptic_feedback">true</bool>
+    <!-- Screen lock authenticating delays ko bypass karne ke liye -->
+    <bool name="config_bidirectional_fingerprint_by_default">true</bool>
+
+    <!-- [3] Ultra-Precise Volume Steps -->
+    <!-- Media volume ke scale ko 15 se badha kar 25 steps karega taaki volume smooth control ho -->
+    <integer name="config_audio_steps_media">25</integer>
 </resources>
