@@ -35,8 +35,8 @@ PRODUCT_GMS_CLIENTID_BASE := android-nothing
 DEVICE_CODENAME := Tetris
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    BuildDesc="Tetris 16 BP2A.250605.031.A3 2602251904 release-keys" \
-    BuildFingerprint=Nothing/Tetris/Tetris:16/BP2A.250605.031.A3/2602251904:user/release-keys \
+    BuildDesc="Tetris 16 BP2A.250605.031.A3 2604151709 release-keys" \
+    BuildFingerprint=Nothing/Tetris/Tetris:16/BP2A.250605.031.A3/2604151709:user/release-keys \
     DeviceProduct=$(DEVICE_CODENAME)
 
 # ascp
@@ -49,3 +49,4 @@ ASCP_OFFICIAL := true
 # Transition lag fix (mediatek)
 
 PERF_ANIM_OVERRIDE := true
+PRODUCT_PACKAGES += libion.vendor
