@@ -49,4 +49,3 @@ ASCP_OFFICIAL := true
 # Transition lag fix (mediatek)
 
 PERF_ANIM_OVERRIDE := true
-PRODUCT_PACKAGES += libion.vendor
