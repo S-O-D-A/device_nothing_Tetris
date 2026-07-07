@@ -2,7 +2,7 @@
 # Bringup for ASCP Project 
 MTK_SEPOLICY_PATH := device/nothing/Tetris/sepolicy/mtk
 
-include device/lineage/sepolicy/libperfmgr/sepolicy.mk
+include device/custom/sepolicy/libperfmgr/sepolicy.mk
 
 ifeq ($(BOARD_MTK_SEPOLICY_IS_LEGACY), true)
 # Build with broken namespaces
