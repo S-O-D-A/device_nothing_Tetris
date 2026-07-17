@@ -1,2 +1,2 @@
-r_dir_file(system_suspend, sysfs)
-r_dir_file(system_suspend, sysfs_batteryinfo)
+#r_dir_file(system_suspend, sysfs)
+#r_dir_file(system_suspend, sysfs_batteryinfo)

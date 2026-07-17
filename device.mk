@@ -442,6 +442,7 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/mediatek/libmtkperf_client \
     hardware/mediatek/wlan/wifi_hal \
     hardware/google/pixel \
+    hardware/google/pixel/usb \
     hardware/google/interfaces \
     $(LOCAL_PATH)
 
@@ -482,5 +483,13 @@ $(call inherit-product, vendor/nothing/Tetris/Tetris-vendor.mk)
 
 # audio config
 $(call soong_config_set_bool,android_hardware_audio,skip_speaker_layout_channel_mask_field,true)
+
 #BCR
 $(call inherit-product, vendor/bcr/bcr.mk)
+
+
+# ION
+$(call soong_config_set_bool,libion,legacy_impl,true)
+
+$(call soong_config_set_bool,libui,legacy_gralloc,true)
+
