@@ -485,7 +485,7 @@ $(call inherit-product, vendor/nothing/Tetris/Tetris-vendor.mk)
 $(call soong_config_set_bool,android_hardware_audio,skip_speaker_layout_channel_mask_field,true)
 
 #BCR
-$(call inherit-product, vendor/bcr/bcr.mk)
+$(call inherit-product-if-exists, vendor/bcr/bcr.mk)
 
 
 # ION
@@ -493,3 +493,7 @@ $(call soong_config_set_bool,libion,legacy_impl,true)
 
 $(call soong_config_set_bool,libui,legacy_gralloc,true)
 
+
+# Legacy ION compatibility for proprietary MediaTek blobs
+PRODUCT_PACKAGES += \
+    libion.vendor

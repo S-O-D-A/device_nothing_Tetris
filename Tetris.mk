@@ -42,7 +42,7 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 # ascp
 
 ASCP_MAINTAINER := Anshuman_X
-WITH_BCR := true
+WITH_BCR := false
 WITH_REVANCED := true
 ASCP_OFFICIAL := true
 

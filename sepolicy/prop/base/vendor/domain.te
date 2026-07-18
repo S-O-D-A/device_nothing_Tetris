@@ -15,13 +15,6 @@ allow {
   -untrusted_app_all
 } sysfs_devinfo:file r_file_perms;
 
-# Date: 2022/07/28
-# Purpose :allow appdomain to use gpu aidl
-allow {
-  
-  -isolated_app_all
-  -appdomain
-  } mtk_hal_mali_platform_default_service:service_manager find;
 
 # Date: 2023/02/21
 # Purpose: only gralloc allocator is allowed to use mtk_slc heap
