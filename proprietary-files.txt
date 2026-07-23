@@ -1102,6 +1102,9 @@ vendor/lib64/vendor.mediatek.hardware.camera.isphal@1.1.so
 vendor/lib64/vendor.mediatek.hardware.camera.postproc@1.0.so
 vendor/lib64/vendor.mediatek.hardware.camera.security@1.0.so
 
+# DisplayService
+vendor/lib64/android.frameworks.displayservice@1.0.so
+
 # Camera Configurations
 vendor/bin/crossbuild/DataSet/SQLiteModule/db/ParameterDB.db
 vendor/bin/crossbuild/DataSet/SQLiteModule/db/ae/ParameterDB_ae.db
