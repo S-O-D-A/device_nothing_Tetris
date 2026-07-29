@@ -353,6 +353,10 @@ PRODUCT_COPY_FILES += \
 ENABLE_VENDOR_RIL_SERVICE := true
 $(call inherit-product, hardware/mediatek/frameworks/mediatek-frameworks.mk)
 
+# MediaTek telephony
+# Avoid eager verification of legacy proprietary telephony classes
+$(call add-product-dex-preopt-module-config,mediatek-telephony-common,disable)
+
 PRODUCT_PACKAGES += \
     android.hardware.radio-V2-ndk.vendor \
     android.hardware.radio.config-V2-ndk.vendor \
