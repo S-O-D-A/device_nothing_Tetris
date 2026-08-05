@@ -357,6 +357,10 @@ $(call inherit-product, hardware/mediatek/frameworks/mediatek-frameworks.mk)
 # Avoid eager verification of legacy proprietary telephony classes
 $(call add-product-dex-preopt-module-config,mediatek-telephony-common,disable)
 
+# MediaTek VT compatibility
+PRODUCT_PACKAGES += \
+    libshim_vtservice
+
 PRODUCT_PACKAGES += \
     android.hardware.radio-V2-ndk.vendor \
     android.hardware.radio.config-V2-ndk.vendor \

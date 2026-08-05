@@ -61,6 +61,10 @@ function blob_fixup() {
         system_ext/lib64/libsource.so)
             grep -q libui_shim.so "$2" || "$PATCHELF" --add-needed libui_shim.so "$2"
             ;;
+        system_ext/lib64/libsink.so)
+            "$PATCHELF" --print-needed "$2" | grep -qx "libshim_vtservice.so" || \
+                "$PATCHELF" --add-needed "libshim_vtservice.so" "$2"
+            ;;
         system_ext/priv-app/ImsService/ImsService.apk)
             apktool_patch "${2}" 'blob-patches'
             ;;
