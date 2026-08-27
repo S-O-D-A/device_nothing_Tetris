@@ -102,15 +102,12 @@ function blob_fixup() {
         vendor/lib64/libsilkybrightnesscore.so)
             "$PATCHELF" --replace-needed "libtinyxml2.so" "libtinyxml2-v34.so" "$2"
             ;;
-        vendor/lib64/libmtkcam_grallocutils_aidlv1helper.so|vendor/lib64/libmtkcam_grallocutils.so)
+        vendor/lib64/libmtkcam_grallocutils_aidlv1helper.so|vendor/lib64/mt6878/libmtkcam_grallocutils.so)
             "${PATCHELF}" --add-needed "libprocessgroup_shim.so" "${2}"
             "${PATCHELF}" --add-needed "libbase_shim.so" "${2}"
             ;;
         vendor/lib64/mt6878/libcam.hal3a.so|vendor/lib64/mt6878/libcam.hal3a.ctrl.so|vendor/lib64/mt6878/libmtkcam_cputrack.so|vendor/lib64/mt6878/libmtkcam_request_requlator.so)
             "${PATCHELF}" --add-needed "libprocessgroup_shim.so" "${2}"
-            ;;
-        vendor/lib64/libmmlpqImpl.so)
-            "$PATCHELF" --replace-needed "libtinyxml2.so" "libtinyxml2-v34.so" "$2"
             ;;
        vendor/lib64/librt_extamp_intf.so)
             "$PATCHELF" --replace-needed "libtinyxml2.so" "libtinyxml2-v34.so" "$2"
