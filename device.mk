@@ -12,6 +12,9 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
 # Properties
+PRODUCT_VENDOR_PROPERTIES += \
+    ro.vendor.boot_security_patch=2026-04-05
+
 PRODUCT_PRODUCT_PROPERTIES += \
     persist.sys.phh.mtk_ged_kpi=1 \
     ro.soc.manufacturer=MediaTek \
